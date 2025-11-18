@@ -15,10 +15,10 @@ Assorted C++ classes simplifying the use of Audio Hardware.
 
 All classes are in the `CXXAudioHardware` namespace.
 
+This package depends on the [CXXCoreAudio](https://github.com/sbooth/CXXCoreAudio) package.
+
 > [!TIP]
 > For a complete Audio Hardware solution in Swift see [CAAudioHardware](https://github.com/sbooth/CAAudioHardware).
-
-This package depends on the [CXXCoreAudio](https://github.com/sbooth/CXXCoreAudio) package.
 
 ## Installation
 
