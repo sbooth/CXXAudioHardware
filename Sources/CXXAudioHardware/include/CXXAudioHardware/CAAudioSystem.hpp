@@ -1,0 +1,116 @@
+//
+// Copyright © 2021-2025 Stephen F. Booth
+// Part of https://github.com/sbooth/CXXAudioHardware
+// MIT license
+//
+
+#pragma once
+
+#import <CXXAudioHardware/CAAudioObject.hpp>
+#import <CXXAudioHardware/CAAudioDevice.hpp>
+
+namespace CXXAudioHardware {
+
+class CAAudioSystem : public CAAudioObject {
+public:
+
+	/// Creates an audio system object.
+	CAAudioSystem() noexcept
+	: CAAudioObject{kAudioObjectSystemObject}
+	{}
+
+	/// Copy constructor.
+	CAAudioSystem(const CAAudioSystem& other) noexcept = default;
+
+	/// Assignment operator.
+	CAAudioSystem& operator=(const CAAudioSystem& other) noexcept = default;
+
+	// Move constructor.
+	CAAudioSystem(CAAudioSystem&& other) noexcept = default;
+
+	// Move assignment operator.
+	CAAudioSystem& operator=(CAAudioSystem&& other) noexcept = default;
+
+	/// Destructor.
+	virtual ~CAAudioSystem() = default;
+
+	std::vector<AudioObjectID> DeviceIDs() const
+	{
+		return GetArrayProperty<AudioObjectID>(CAPropertyAddress(kAudioHardwarePropertyDevices));
+	}
+
+	std::vector<CAAudioDevice> Devices() const
+	{
+		const auto vec{DeviceIDs()};
+		std::vector<CAAudioDevice> result{vec.size()};
+		std::transform(vec.cbegin(), vec.cend(), result.begin(), [](AudioObjectID objectID) { return CAAudioDevice(objectID); });
+		return result;
+	}
+
+	AudioObjectID DefaultInputDeviceID() const
+	{
+		return GetArithmeticProperty<AudioObjectID>(CAPropertyAddress(kAudioHardwarePropertyDefaultInputDevice));
+	}
+
+	CAAudioObject DefaultInputDevice() const
+	{
+		return CAAudioObject(DefaultInputDeviceID());
+	}
+
+	AudioObjectID DefaultOutputDeviceID() const
+	{
+		return GetArithmeticProperty<AudioObjectID>(CAPropertyAddress(kAudioHardwarePropertyDefaultOutputDevice));
+	}
+
+	CAAudioObject DefaultOutputDevice() const
+	{
+		return CAAudioObject(DefaultOutputDeviceID());
+	}
+
+	AudioObjectID DefaultSystemOutputDeviceID() const
+	{
+		return GetArithmeticProperty<AudioObjectID>(CAPropertyAddress(kAudioHardwarePropertyDefaultSystemOutputDevice));
+	}
+
+	CAAudioObject DefaultSystemOutputDevice() const
+	{
+		return CAAudioObject(DefaultSystemOutputDeviceID());
+	}
+
+	AudioObjectID AudioDeviceIDForUID(CFStringRef _Nonnull inUID) const
+	{
+		AudioObjectID deviceID;
+		AudioValueTranslation valueTranslation{ &inUID, sizeof(CFStringRef), &deviceID, sizeof(AudioObjectID) };
+		const CAPropertyAddress objectPropertyAddress{kAudioHardwarePropertyDeviceForUID};
+		UInt32 size{sizeof(AudioValueTranslation)};
+		GetPropertyData(objectPropertyAddress, 0, nullptr, size, &valueTranslation);
+		return deviceID;
+	}
+
+	CAAudioDevice AudioDeviceForUID(CFStringRef _Nonnull inUID) const
+	{
+		return CAAudioDevice(AudioDeviceIDForUID(inUID));
+	}
+
+	//	kAudioHardwarePropertyMixStereoToMono                       = 'stmo',
+	//	kAudioHardwarePropertyPlugInList                            = 'plg#',
+	//	kAudioHardwarePropertyTranslateBundleIDToPlugIn             = 'bidp',
+	//	kAudioHardwarePropertyTransportManagerList                  = 'tmg#',
+	//	kAudioHardwarePropertyTranslateBundleIDToTransportManager   = 'tmbi',
+	//	kAudioHardwarePropertyBoxList                               = 'box#',
+	//	kAudioHardwarePropertyTranslateUIDToBox                     = 'uidb',
+	//	kAudioHardwarePropertyClockDeviceList                       = 'clk#',
+	//	kAudioHardwarePropertyTranslateUIDToClockDevice             = 'uidc',
+	//	kAudioHardwarePropertyProcessIsMaster                       = 'mast',
+	//	kAudioHardwarePropertyIsInitingOrExiting                    = 'inot',
+	//	kAudioHardwarePropertyUserIDChanged                         = 'euid',
+	//	kAudioHardwarePropertyProcessIsAudible                      = 'pmut',
+	//	kAudioHardwarePropertySleepingIsAllowed                     = 'slep',
+	//	kAudioHardwarePropertyUnloadingIsAllowed                    = 'unld',
+	//	kAudioHardwarePropertyHogModeIsAllowed                      = 'hogr',
+	//	kAudioHardwarePropertyUserSessionIsActiveOrHeadless         = 'user',
+	//	kAudioHardwarePropertyServiceRestarted                      = 'srst',
+	//	kAudioHardwarePropertyPowerHint                             = 'powh'
+};
+
+} /* namespace CXXAudioHardware */
