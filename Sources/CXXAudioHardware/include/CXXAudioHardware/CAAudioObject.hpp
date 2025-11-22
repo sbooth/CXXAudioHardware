@@ -124,7 +124,7 @@ public:
 	}
 
 	template <typename T, typename = std::enable_if_t</*std::is_class_v<T> &&*/ std::is_pointer_v<T>>>
-	T CopyCFTypeProperty(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize = 0, const void * _Nullable inQualifierData = nullptr) const CF_RETURNS_RETAINED
+	T _Nullable CopyCFTypeProperty(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize = 0, const void * _Nullable inQualifierData = nullptr) const CF_RETURNS_RETAINED
 	{
 		T value;
 		UInt32 size{sizeof(T)};
@@ -162,32 +162,32 @@ public:
 		return CAAudioObject(OwnerID());
 	}
 
-	CFStringRef CopyName() const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyName() const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyName));
 	}
 
-	CFStringRef CopyModelName() const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyModelName() const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyModelName));
 	}
 
-	CFStringRef CopyManufacturer() const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyManufacturer() const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyManufacturer));
 	}
 
-	CFStringRef CopyElementName(AudioObjectPropertyScope inScope, AudioObjectPropertyElement inElement) const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyElementName(AudioObjectPropertyScope inScope, AudioObjectPropertyElement inElement) const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyElementName, inScope, inElement));
 	}
 
-	CFStringRef CopyElementCategoryName(AudioObjectPropertyScope inScope, AudioObjectPropertyElement inElement) const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyElementCategoryName(AudioObjectPropertyScope inScope, AudioObjectPropertyElement inElement) const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyElementCategoryName, inScope, inElement));
 	}
 
-	CFStringRef CopyElementNumberName(AudioObjectPropertyScope inScope, AudioObjectPropertyElement inElement) const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyElementNumberName(AudioObjectPropertyScope inScope, AudioObjectPropertyElement inElement) const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyElementNumberName, inScope, inElement));
 	}
@@ -207,12 +207,12 @@ public:
 
 	//	kAudioObjectPropertyIdentify            = 'iden',
 
-	CFStringRef CopySerialNumber() const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopySerialNumber() const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertySerialNumber));
 	}
 
-	CFStringRef CopyFirmwareVersion() const CF_RETURNS_RETAINED
+	CFStringRef _Nullable CopyFirmwareVersion() const CF_RETURNS_RETAINED
 	{
 		return CopyCFTypeProperty<CFStringRef>(CAPropertyAddress(kAudioObjectPropertyFirmwareVersion));
 	}
