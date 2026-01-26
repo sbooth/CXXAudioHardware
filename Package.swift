@@ -22,16 +22,13 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/sbooth/CXXCoreAudio", from: "0.1.0")
+        .package(url: "https://github.com/sbooth/CXXCoreAudio", from: "0.5.1")
     ],
     targets: [
         .target(
             name: "CXXAudioHardware",
             dependencies: [
                 "CXXCoreAudio",
-            ],
-            cxxSettings: [
-                .headerSearchPath("include/CXXAudioHardware"),
             ],
             linkerSettings: [
                 .linkedFramework("CoreAudio"),
