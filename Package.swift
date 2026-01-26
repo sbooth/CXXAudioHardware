@@ -23,7 +23,7 @@ let package = Package(
 		),
 	],
 	dependencies: [
-		.package(url: "https://github.com/sbooth/CXXCoreAudio", from: "0.1.0")
+		.package(url: "https://github.com/sbooth/CXXCoreAudio", from: "0.5.1")
 	],
 	targets: [
 		// Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -32,9 +32,6 @@ let package = Package(
 			name: "CXXAudioHardware",
 			dependencies: [
 				"CXXCoreAudio",
-			],
-			cSettings: [
-				.headerSearchPath("include/CXXAudioHardware"),
 			],
 			linkerSettings: [
 				.linkedFramework("CoreAudio"),

@@ -5,7 +5,7 @@
 // Part of https://github.com/sbooth/CXXAudioHardware
 //
 
-#import "CAAudioObject.hpp"
+#import "CXXAudioHardware/CAAudioObject.hpp"
 #import "AudioHardwareErrors.hpp"
 
 bool CXXAudioHardware::CAAudioObject::IsPropertySettable(const AudioObjectPropertyAddress& inAddress) const
