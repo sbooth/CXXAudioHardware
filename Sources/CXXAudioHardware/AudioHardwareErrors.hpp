@@ -12,7 +12,7 @@
 
 #import <CoreAudio/CoreAudio.h>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 namespace detail {
 
 /// A std::error_category for return values from the AudioObject API.
@@ -66,4 +66,4 @@ inline void ThrowIfAudioObjectError(OSStatus result, const char * const operatio
 		throw std::system_error(result, detail::audioObjectErrorCategory_, operation);
 }
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */

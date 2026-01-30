@@ -7,10 +7,10 @@
 
 #pragma once
 
-#import <CXXAudioHardware/CAAudioObject.hpp>
-#import <CXXAudioHardware/CAAudioDevice.hpp>
+#import <audio_hardware/CAAudioObject.hpp>
+#import <audio_hardware/CAAudioDevice.hpp>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 
 class CAAudioSystem : public CAAudioObject {
 public:
@@ -114,4 +114,4 @@ public:
 	//	kAudioHardwarePropertyPowerHint                             = 'powh'
 };
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */

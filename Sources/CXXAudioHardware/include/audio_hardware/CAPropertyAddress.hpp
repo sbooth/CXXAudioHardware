@@ -11,7 +11,7 @@
 
 #import <CoreAudio/AudioHardware.h>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 
 /// A class extending the functionality of an AudioObjectPropertyAddress structure.
 class CAPropertyAddress : public AudioObjectPropertyAddress {
@@ -84,4 +84,4 @@ public:
 	}
 };
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */

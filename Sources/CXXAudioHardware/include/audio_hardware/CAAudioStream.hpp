@@ -8,9 +8,9 @@
 #pragma once
 
 #import <CXXCoreAudio/CAStreamDescription.hpp>
-#import <CXXAudioHardware/CAAudioObject.hpp>
+#import <audio_hardware/CAAudioObject.hpp>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 
 class CAAudioStream : public CAAudioObject {
 public:
@@ -62,4 +62,4 @@ public:
 	}
 };
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */

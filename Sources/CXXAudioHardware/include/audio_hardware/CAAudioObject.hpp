@@ -13,9 +13,9 @@
 #import <CoreAudio/CoreAudio.h>
 #import <CoreFoundation/CFString.h>
 
-#import <CXXAudioHardware/CAPropertyAddress.hpp>
+#import <audio_hardware/CAPropertyAddress.hpp>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 
 enum class CAAudioObjectDirectionalScope {
 	input,
@@ -223,4 +223,4 @@ protected:
 	AudioObjectID objectID_{kAudioObjectUnknown};
 };
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */
