@@ -7,13 +7,13 @@
 
 #pragma once
 
-#import <type_traits>
-#import <vector>
+#include <audio_hardware/CAPropertyAddress.hpp>
 
-#import <CoreAudio/CoreAudio.h>
-#import <CoreFoundation/CFString.h>
+#include <CoreAudio/CoreAudio.h>
+#include <CoreFoundation/CFString.h>
 
-#import <audio_hardware/CAPropertyAddress.hpp>
+#include <type_traits>
+#include <vector>
 
 namespace audio_hardware {
 

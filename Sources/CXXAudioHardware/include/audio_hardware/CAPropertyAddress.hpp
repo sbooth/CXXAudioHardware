@@ -7,9 +7,9 @@
 
 #pragma once
 
-#import <cstring>
+#include <CoreAudio/AudioHardware.h>
 
-#import <CoreAudio/AudioHardware.h>
+#include <cstring>
 
 namespace audio_hardware {
 

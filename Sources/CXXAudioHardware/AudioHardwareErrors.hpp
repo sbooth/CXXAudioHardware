@@ -7,10 +7,10 @@
 
 #pragma once
 
-#import <exception>
-#import <system_error>
+#include <CoreAudio/CoreAudio.h>
 
-#import <CoreAudio/CoreAudio.h>
+#include <exception>
+#include <system_error>
 
 namespace audio_hardware {
 namespace detail {

@@ -7,8 +7,8 @@
 
 #pragma once
 
-#import <CXXCoreAudio/CAStreamDescription.hpp>
-#import <audio_hardware/CAAudioObject.hpp>
+#include <audio_hardware/CAAudioObject.hpp>
+#include <CXXCoreAudio/CAStreamDescription.hpp>
 
 namespace audio_hardware {
 
