@@ -10,7 +10,7 @@ import Testing
 
 @Suite struct CXXAudioHardwareTests {
     @Test func audioObject() async {
-        let obj = CXXAudioHardware.CAAudioObject()
+        let obj = audio_hardware.CAAudioObject()
         #expect(obj.ObjectID() == kAudioObjectUnknown)
     }
 }
