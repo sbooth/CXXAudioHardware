@@ -7,12 +7,12 @@
 
 #pragma once
 
-#import <exception>
-#import <system_error>
+#include <CoreAudio/CoreAudio.h>
 
-#import <CoreAudio/CoreAudio.h>
+#include <exception>
+#include <system_error>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 namespace detail {
 
 /// A std::error_category for return values from the AudioObject API.
@@ -66,4 +66,4 @@ inline void ThrowIfAudioObjectError(OSStatus result, const char * const operatio
 		throw std::system_error(result, detail::audioObjectErrorCategory_, operation);
 }
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */

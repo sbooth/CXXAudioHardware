@@ -7,11 +7,11 @@
 
 #pragma once
 
-#import <cstring>
+#include <CoreAudio/AudioHardware.h>
 
-#import <CoreAudio/AudioHardware.h>
+#include <cstring>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 
 /// A class extending the functionality of an AudioObjectPropertyAddress structure.
 class CAPropertyAddress : public AudioObjectPropertyAddress {
@@ -84,4 +84,4 @@ public:
 	}
 };
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */

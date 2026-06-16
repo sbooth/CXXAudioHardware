@@ -7,10 +7,10 @@
 
 #pragma once
 
-#import <CXXAudioHardware/CAAudioObject.hpp>
-#import <CXXAudioHardware/CAAudioStream.hpp>
+#include <audio_hardware/CAAudioObject.hpp>
+#include <audio_hardware/CAAudioStream.hpp>
 
-namespace CXXAudioHardware {
+namespace audio_hardware {
 
 class CAAudioDevice : public CAAudioObject {
 public:
@@ -96,4 +96,4 @@ public:
 
 };
 
-} /* namespace CXXAudioHardware */
+} /* namespace audio_hardware */
