@@ -5,10 +5,11 @@
 // Part of https://github.com/sbooth/CXXAudioHardware
 //
 
-#import "CXXAudioHardware/CAAudioObject.hpp"
-#import "AudioHardwareErrors.hpp"
+#include "audio_hardware/CAAudioObject.hpp"
 
-bool CXXAudioHardware::CAAudioObject::IsPropertySettable(const AudioObjectPropertyAddress& inAddress) const
+#include "AudioHardwareErrors.hpp"
+
+bool audio_hardware::CAAudioObject::IsPropertySettable(const AudioObjectPropertyAddress& inAddress) const
 {
 	Boolean settable = false;
 	const auto result = AudioObjectIsPropertySettable(objectID_, &inAddress, &settable);
@@ -16,7 +17,7 @@ bool CXXAudioHardware::CAAudioObject::IsPropertySettable(const AudioObjectProper
 	return settable != 0;
 }
 
-UInt32 CXXAudioHardware::CAAudioObject::GetPropertyDataSize(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize, const void *inQualifierData) const
+UInt32 audio_hardware::CAAudioObject::GetPropertyDataSize(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize, const void *inQualifierData) const
 {
 	UInt32 size = 0;
 	const auto result = AudioObjectGetPropertyDataSize(objectID_, &inAddress, inQualifierDataSize, inQualifierData, &size);
@@ -24,37 +25,37 @@ UInt32 CXXAudioHardware::CAAudioObject::GetPropertyDataSize(const AudioObjectPro
 	return size;
 }
 
-void CXXAudioHardware::CAAudioObject::GetPropertyData(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize, const void *inQualifierData, UInt32& ioDataSize, void *outData) const
+void audio_hardware::CAAudioObject::GetPropertyData(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize, const void *inQualifierData, UInt32& ioDataSize, void *outData) const
 {
 	const auto result = AudioObjectGetPropertyData(objectID_, &inAddress, inQualifierDataSize, inQualifierData, &ioDataSize, outData);
 	ThrowIfAudioObjectError(result, "AudioObjectGetPropertyData");
 }
 
-void CXXAudioHardware::CAAudioObject::SetPropertyData(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize, const void *inQualifierData, UInt32 inDataSize, const void *inData)
+void audio_hardware::CAAudioObject::SetPropertyData(const AudioObjectPropertyAddress& inAddress, UInt32 inQualifierDataSize, const void *inQualifierData, UInt32 inDataSize, const void *inData)
 {
 	const auto result = AudioObjectSetPropertyData(objectID_, &inAddress, inQualifierDataSize, inQualifierData, inDataSize, inData);
 	ThrowIfAudioObjectError(result, "AudioObjectSetPropertyData");
 }
 
-void CXXAudioHardware::CAAudioObject::AddPropertyListener(const AudioObjectPropertyAddress& inAddress, AudioObjectPropertyListenerProc inListenerProc, void *inClientData)
+void audio_hardware::CAAudioObject::AddPropertyListener(const AudioObjectPropertyAddress& inAddress, AudioObjectPropertyListenerProc inListenerProc, void *inClientData)
 {
 	const auto result = AudioObjectAddPropertyListener(objectID_, &inAddress, inListenerProc, inClientData);
 	ThrowIfAudioObjectError(result, "AudioObjectAddPropertyListener");
 }
 
-void CXXAudioHardware::CAAudioObject::RemovePropertyListener(const AudioObjectPropertyAddress& inAddress, AudioObjectPropertyListenerProc inListenerProc, void *inClientData)
+void audio_hardware::CAAudioObject::RemovePropertyListener(const AudioObjectPropertyAddress& inAddress, AudioObjectPropertyListenerProc inListenerProc, void *inClientData)
 {
 	const auto result = AudioObjectRemovePropertyListener(objectID_, &inAddress, inListenerProc, inClientData);
 	ThrowIfAudioObjectError(result, "AudioObjectRemovePropertyListener");
 }
 
-void CXXAudioHardware::CAAudioObject::AddPropertyListenerBlock(const AudioObjectPropertyAddress& inAddress, dispatch_queue_t inDispatchQueue, AudioObjectPropertyListenerBlock inListenerBlock)
+void audio_hardware::CAAudioObject::AddPropertyListenerBlock(const AudioObjectPropertyAddress& inAddress, dispatch_queue_t inDispatchQueue, AudioObjectPropertyListenerBlock inListenerBlock)
 {
 	const auto result = AudioObjectAddPropertyListenerBlock(objectID_, &inAddress, inDispatchQueue, inListenerBlock);
 	ThrowIfAudioObjectError(result, "AudioObjectAddPropertyListenerBlock");
 }
 
-void CXXAudioHardware::CAAudioObject::RemovePropertyListenerBlock(const AudioObjectPropertyAddress& inAddress, dispatch_queue_t inDispatchQueue, AudioObjectPropertyListenerBlock inListenerBlock)
+void audio_hardware::CAAudioObject::RemovePropertyListenerBlock(const AudioObjectPropertyAddress& inAddress, dispatch_queue_t inDispatchQueue, AudioObjectPropertyListenerBlock inListenerBlock)
 {
 	const auto result = AudioObjectRemovePropertyListenerBlock(objectID_, &inAddress, inDispatchQueue, inListenerBlock);
 	ThrowIfAudioObjectError(result, "AudioObjectRemovePropertyListenerBlock");

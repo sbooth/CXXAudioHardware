@@ -7,10 +7,10 @@
 
 module CXXAudioHardware {
 	requires cplusplus17
-	header "CXXAudioHardware/CAAudioDevice.hpp"
-	header "CXXAudioHardware/CAAudioObject.hpp"
-	header "CXXAudioHardware/CAAudioStream.hpp"
-	header "CXXAudioHardware/CAAudioSystem.hpp"
-	header "CXXAudioHardware/CAPropertyAddress.hpp"
+	header "audio_hardware/CAAudioDevice.hpp"
+	header "audio_hardware/CAAudioObject.hpp"
+	header "audio_hardware/CAAudioStream.hpp"
+	header "audio_hardware/CAAudioSystem.hpp"
+	header "audio_hardware/CAPropertyAddress.hpp"
 	export *
 }
