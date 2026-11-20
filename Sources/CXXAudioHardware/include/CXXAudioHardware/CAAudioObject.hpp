@@ -121,6 +121,7 @@ public:
 		const auto count{size / sizeof(T)};
 		auto vec{std::vector<T>(count)};
 		GetPropertyData(inAddress, inQualifierDataSize, inQualifierData, size, vec.data());
+        vec.resize(size / sizeof(T));
 		return vec;
 	}
 
